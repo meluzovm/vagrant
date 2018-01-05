@@ -1,0 +1,6 @@
+--vagrant
+vagrant init hashicorp/precise32  --minimal 
+vagrant ssh
+vagrant halt | suspend | resume  | up
+vagrant resume
+vagrant halt
