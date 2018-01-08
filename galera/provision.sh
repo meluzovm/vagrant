@@ -2,16 +2,15 @@
 #ln -s /usr/bin/nodejs /usr/bin/node
 
 #Add repo dor MariaDB as simlink
-ln -s /etc/yum.repos.d/MariaDB.repo /vagrant/MariaDB.repo
+rm -f /etc/yum.repos.d/MariaDB.repo
+ln -s /vagrant/MariaDB.repo /etc/yum.repos.d/MariaDB.repo
 
 #Install MariaDB
-dpkg -s MariaDB-server &>/dev/null || {
-apt-get -y update
-yum install MariaDB-server MariaDB-client
+ yum list installed MariaDB-server&>/dev/null || {
+yum -y install MariaDB-server MariaDB-client galera
 }
 #Install Ansible
-dpkg -s ansible &>/dev/null || {
-apt-get -y update
+ yum list installed ansible&>/dev/null || {
 yum -y install epel-release
 yum -y install ansible
 }
