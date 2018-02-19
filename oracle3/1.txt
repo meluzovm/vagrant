@@ -1,0 +1,2 @@
+/vagrant/db/runInstaller -silent -responseFile /vagrant/only_oracle.rsp
+
