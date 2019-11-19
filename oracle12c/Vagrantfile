@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+  config.vm.hostname = "oracle12c"
+
+  config.vm.box_check_update = false
+
+  config.vm.network "forwarded_port", guest: 1521, host: 15210
+  config.vm.network "forwarded_port", guest: 5500, host: 5555
+  config.vm.network "forwarded_port", guest: 80, host: 80
+
+  config.vm.network "private_network", ip: "192.168.33.200"
+
+  config.vm.provider "virtualbox" do |vb|
+     	  vb.name = "oracle12c"
+	  vb.memory = "1524"
+
+  end
+
+  config.vm.provision "shell", path: "provision.sh"
+end
